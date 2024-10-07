@@ -49,9 +49,13 @@ function addNumberToInput(number){
 }
 
 function addOperandToInput(operand){
-    if(operandPresent){
+    if(operandPresent && (leftValue === "" || rightValue === "")){
         alert("Cannot add multiple operands!");
-    } else if (leftValue === ""){
+    } else if(operandPresent){ //perform current operation then add operand
+        operate();
+        addOperandToInput(operand);
+    }
+    else if (leftValue === ""){
         alert("Cannot add operand without any value preceding it!");
     } else {
         input.textContent = leftValue + " "  + operand + " ";
